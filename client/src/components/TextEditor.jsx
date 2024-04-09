@@ -9,7 +9,6 @@ import styled from "@emotion/styled";
 import { io } from "socket.io-client";
 import { useParams } from 'react-router-dom';
 
-
 const toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
   ['blockquote', 'code-block'],
