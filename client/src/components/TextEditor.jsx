@@ -42,9 +42,7 @@ useEffect(() => {
   `
 
   const QuillServer = new Quill('#container', {theme:'snow', modules: { toolbar : toolbarOptions}})
-QuillServer.disable();
-QuillServer.setText('Loading the document...')
-setQuill(QuillServer);
+
 }, []);
 
 useEffect(() => {
@@ -71,43 +69,6 @@ useEffect(() => {
       quill && quill.off('text-change', handleChange);
   }
 }, [quill, socket])
-
-useEffect(() => {
-  if (socket === null || quill === null) return;
-
-  const handleChange = (delta) => {
-      quill.updateContents(delta);
-  }
-
-  socket && socket.on('receive-changes', handleChange);
-
-  return () => {
-      socket && socket.off('receive-changes', handleChange);
-  }
-}, [quill, socket]);
-
-useEffect(() => {
-  if (quill === null || socket === null) return;
-
-  socket && socket.once('load-document', document => {
-      quill.setContents(document);
-      quill.enable();
-  })
-
-  socket && socket.emit('get-document', id);
-},  [quill, socket, id]);
-
-useEffect(() => {
-  if (socket === null || quill === null) return;
-
-  const interval = setInterval(() => {
-      socket.emit('save-document', quill.getContents())
-  }, 2000);
-
-  return () => {
-      clearInterval(interval);
-  }
-}, [socket, quill]);
 
   return (
         <Box className='container' id='container'></Box>  
