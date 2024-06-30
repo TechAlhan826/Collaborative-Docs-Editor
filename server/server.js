@@ -1,10 +1,9 @@
-const { Server } = require('socket.io');
-import { Connection } from './database/db';
-//const { Connection } = require('./database/db.js');
+import { Server } from 'socket.io';
+import { Connections } from './database/db.js';
 import { getDocument, updateDocument } from './controller/doc-controller.js';
 
 const PORT = 9000;
-Connection();
+Connections();
 
 const io = new Server(PORT, {
     cors:{

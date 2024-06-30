@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Collaborative-Docs-Editor Server",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [
     "Collaborative-Docs-Editor"
@@ -13,9 +15,11 @@
   "license": "ISC",
   "dependencies": {
     "env": "^0.0.2",
+    "express": "^4.19.2",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.3",
     "nodemon": "^3.1.0",
-    "socket.io": "^4.7.5"
+    "socket.io": "^4.7.5",
+    "ws": "^8.17.1"
   }
 }

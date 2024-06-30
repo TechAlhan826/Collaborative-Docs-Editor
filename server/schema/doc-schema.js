@@ -9,8 +9,10 @@ const documentSchema = mongoose.Schema({
         type: Object,
         required: true
     }
-});
+})
 
-const document = mongoose.model('document', documentSchema);
+//const document = mongoose.model('document', documentSchema);
 
-export default document;
+//export default document;
+
+export const document = mongoose.model('document', documentSchema);
